@@ -1,0 +1,90 @@
+@charset "gb2312";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tfoot, thead, th { margin: 0; padding: 0; border: 0; outline: 0; }
+body { font-size: 13px; line-height: 1.8; color: #444; background-color:#ececec; font-family: "ËÎÌå", "Î¢ÈíÑÅºÚ", "Verdana", "Lucida", "Arial", "Helvetica", "Microsoft Yahei", "sans-serif"; }
+fieldset, img { border: 0; }
+ol, ul { list-style: none; }
+input, button, select, textarea { outline: none; border-collapse: collapse; }
+a:link, a:visited { text-decoration: none; color: #333; }
+a:hover, a:active { text-decoration: none; color: #0774d0; }
+* html .clearFix { display: inline-block; }
+*+html .clearFix { display: inline-block; }
+.clearFix:after { height: 0; visibility: hidden; content: "."; display: block; clear: both; }
+#header, #content, #friendlink, #footer { margin: 0 auto; }
+.top, .center, .container, .dibucont { width: 1000px; margin: 0 auto; }
+.top .toubu .logo { float:left; }
+.top .toubu .tel { float: right; }
+.top ul.nav { font-size:14px; }
+.top ul.nav li { float:left; }
+.top ul.nav li a { height:43px; line-height:43px;  display:block; text-align:center; color:#333; margin:0 38px 0 28px; }
+.top ul.nav li a:hover{color: #0774d0; }
+#bannerBox { clear:both; width:100%; height:600px; margin-bottom:30px; }
+#flashs { position:relative; height:600px; overflow:hidden; }
+#flashs .bgitem { z-index:1; position:absolute; top:0; }
+#flashs .btn { position:absolute; z-index:7; bottom:15px; left:50%; margin-left:-64px; padding:0px 6px; }
+#flashs .btn span { color:#fff; background:#202932; cursor: pointer; display: inline-block; margin:0 2px; width:25px; height:25px; font-size:14px; line-height:25px; text-align:center; }
+#flashs .btn span.cur { background:#0774d0; }
+#flashbg0 { background: url(../images/banner1.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }
+#flashbg1 { background: url(../images/banner2.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }
+.banner { width: 1000px; margin: 0 auto;}
+.our{ margin-bottom:30px;}
+.lianxi{ float:left; width:280px; margin-right:14px;background-color:#FFF; line-height:28px; background:url(../images/lx.jpg) no-repeat #FFF; padding:90px 0 0 10px;}
+.lianxi span{ font-weight:bold;}
+.us{ float:left; width:320px; padding:10px; background:#FFF; line-height:26px; }
+.sytitle{ font-size:16px; line-height:30px;}
+.uscont { line-height:25px; }
+.uscont img { float:left; border:1px #e3e3e3 solid; padding:1px; margin-right:10px; width:150px; height:115px; }
+.ckxq{ float:right;}
+.news{ float:right; width:320px; padding:10px 10px 5px 10px; background:#FFF; line-height:26px; }
+ul.newstit { padding:6px; }
+ul.newstit li { line-height:27px; border-bottom: 1px dotted #333;}
+.fuwu{ margin-bottom:30px;}
+.xiangmu{float:left; width:270px; background-color:#FFF; line-height:28px; padding:10px;}
+ul.flmenu { margin-bottom:3px; }
+ul.flmenu li { height:40px; line-height:40px; border-bottom:2px #fff solid; background:url(../images/dot.png) no-repeat 10px center #ececec; }
+ul.flmenu li a { display:block; padding-left:25px; height:40px; font-size:14px; }
+ul.flmenu li:hover { background:url(../images/dot1.png) no-repeat 10px center #1a78dd; }
+ul.flmenu li:hover a { color:#fff; }
+ul.case { float:right; background:#FFF; padding:10px; width:675px; }
+ul.case li { float:left; width:209px; height:193px; text-align: center; margin-right:13px; }
+ul.case li a { font-size:12px; line-height:30px; color:#333; }
+ul.case li span {display: block; }
+ul.case li span img { width:205px; height:163px; border:1px solid #dedede; }
+.zixun{ margin-bottom:20px;}
+.zhishi{float:left; width:270px; background-color:#FFF; line-height:28px; padding:10px; margin-right:14px;}
+.changshi{ float:left; width:320px; padding:10px;background-color:#FFF;}
+.guzhang{ float:right; width:320px; padding:10px; background-color:#FFF;}
+.brand { background:#FFF; margin-bottom:5px; }
+.brandtitle { border-bottom:1px solid #c6c6c6; margin-bottom:10px; height: 42px; line-height: 42px; font-weight: bold; font-size: 16px; padding-left: 35px; }
+.xwzxbox { padding: 10px; }
+dl.xwzx { margin-bottom: 15px; }
+dl.xwzx dt { float: left; width: 150px; border: 1px solid #ccc; padding: 1px; }
+dl.xwzx dt img { display: block; height: 150px; width: 150px; }
+dl.xwzx dd { float: right; width: 810px; }
+dl.xwzx dd b { display: block; font-size: 16px; font-weight: normal; color: #51bff0; padding-bottom: 10px; }
+dl.xwzx dd span { display: block; line-height: 25px; }
+.dibucont{ text-align:center;}
+ ul.link li { display: inline; padding: 0 10px; }
+.container{ margin-bottom:10px;}
+.container .rightcont { float:right; width: 690px; }
+.container .leftcont { float:left; width: 290px; }
+.nylianxi{  width:280px; background-color:#FFF; line-height:28px; background:url(../images/lx.jpg) no-repeat #FFF; padding:90px 0 0 10px; margin-bottom:10px;}
+.nylianxi span{ font-weight:bold;}
+.nyxiangmu{width:270px; background-color:#FFF; line-height:28px; padding:10px; margin-bottom:10px;}
+.nyzx{ width:270px; background-color:#FFF; line-height:28px; padding:10px; }
+dl.frnytitle {height:30px;line-height: 30px; border-bottom: 2px solid #187ad5; margin-bottom:10px;}
+dl.frnytitle dt { float: right;}
+dl.frnytitle dd { float: left;  font-weight:bold; color:#333; font-size:13px;}
+.rightcont h1 { font-size: 20px; padding-bottom: 20px; text-align: center; font-family: Microsoft YaHei; }
+.rightcont .keyword { margin-bottom: 10px; text-align: center;    border-bottom: 1px dashed #4b4b4b; }
+.rightcont .substance img {width: expression(this.width > 670 ? 670: true); max-width: 670px; }
+.rightcont .s_x, .nyfr .x_g { line-height: 30px;  }
+ul.newstitle { padding:0 10px 10px 0; }
+ul.newstitle li { border-bottom: 1px dotted #4b4b4b; padding: 5px 0 5px 5px; }
+ul.newstitle li span { float: right; }
+.tagsshow ul { padding:10px; }
+.tagsshow ul li { border-bottom: 1px dotted #4b4b4b; padding: 5px 0 5px 20px; }
+ul.nycase { padding:10px; width:675px; }
+ul.nycase li { float:left; width:209px; height:193px; text-align: center; margin-right:13px; }
+ul.nycase li a { font-size:12px; line-height:30px; color:#333; }
+ul.nycase li span {display: block; }
+ul.nycase li span img { width:205px; height:163px; border:1px solid #dedede; }
