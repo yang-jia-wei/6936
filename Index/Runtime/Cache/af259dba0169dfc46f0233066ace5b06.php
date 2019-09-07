@@ -19,70 +19,102 @@
                 <span>服务热线</span><br>
 
             </div>
+<!--            关于我们   -->
             <div class="us">
-                <div class="sytitle">关于我们</div>
-                <div class="uscont"><img src="images/jianjie.jpg" alt="南宁西门子洗衣机售后维修电话">24小时南宁西门子洗衣机售后维修电话:。好生活从西门子洗衣机开始!南宁西门子洗衣务电话服务目标：0缺陷，客户100%满意(全市)认真接听客户心声。南宁西门子洗衣机维修电话公司宗旨：...</div>
-                <div class="ckxq"><a href="http://www.gxnnxmzsh.com/?list-2.html"><img src="images/ckxq.jpg" alt="南宁西门子洗衣机售后维修服务电话"></a></div>
+                <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>206))->find();echo $classify['classify_name'];?></div>
+                <div class="uscont" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                    <img src="<?php $classify=M('classify')->where(array('classify_id'=>206))->find();echo $classify['classify_img'];?>" alt="">
+                    <?php $about_us=M()->table('index_about_us')->where('about_us_id = 1 ')->find();?> <?php echo $about_us['about_content']; ?>
+                </div>
+                <div class="ckxq">
+                    <a href="<?php echo classify_url(60,206);?>"><img src="images/ckxq.jpg" alt=""></a>
+                </div>
             </div>
+<!--新闻中心              -->
             <div class="news">
-                <div class="sytitle">新闻中心</div>
-                <ul class="newstit">
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-6-1.html" title="翻越5000米高山送货到家的只有海尔南宁西门子洗衣机">翻越5000米高山送货到家的只有海尔南宁西门子洗</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-5-1.html" title="南宁西门子洗衣机竟成家中的“躲避杀手” 如何让孩子阔别它？">南宁西门子洗衣机竟成家中的“躲避杀手”&nbsp;如何让</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-4-1.html" title="什么样的家电产品能有定价权">什么样的家电产品能有定价权</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-3-1.html" title="统帅提议年轻社群互动李荣浩首位“真我”明星">统帅提议年轻社群互动李荣浩首位“真我”明星</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-2-1.html" title="牵手华为HiLink统帅多元化生态布局伶俐家庭">牵手华为HiLink统帅多元化生态布局伶俐家庭</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-1-1.html" title="卡萨帝南宁西门子洗衣机缘何成为“大国工匠”？">卡萨帝南宁西门子洗衣机缘何成为“大国工匠”？</a></li>
+                <div class="sytitle" ><?php $classify=M('classify')->where(array('classify_id'=>208))->find();echo $classify['classify_name'];?></div>
+                <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+
+                    <?php $news=M()->table('index_news n,index_relevance r')->where('r.classify_id =208 and r.content_id=n.news_id')->limit(6)->order('date desc')->select();foreach($news as $k=>$v){?>
+                    <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a></li>
+                    <?php }?>
+
+                  
                 </ul>
-                <div class="ckxq"><a href="http://www.gxnnxmzsh.com/?list-4.html"><img src="images/ckxq.jpg" alt="南宁西门子洗衣机维修电话"></a></div>
+                <div class="ckxq"><a href="<?php echo classify_url(14,208);?>"><img src="images/ckxq.jpg" alt=""></a></div>
             </div>
         </div>
+
+<!--        服务项目     -->
+
         <div class="fuwu clearFix">
             <div class="xiangmu">
-                <div class="sytitle">服务项目</div>
+                <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>207))->find();echo $classify['classify_name'];?></div>
                 <ul class="flmenu">
-                    <li><a href="http://www.gxnnxmzsh.com/?list-9.html">西门子洗衣机维修</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?list-10.html">西门子滚筒洗衣机维修</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?list-11.html">西门子全自动洗衣机维修</a></li>
+                    <?php $list=M('classify')->where(array('classify_pid'=>207))->order('date asc')->select(); foreach($list as $k=>$v){?>
+                    <li><a href="<?php echo classify_url($v['type_id'],$v['classify_id']);?>"><?php echo $v['classify_name']?></a></li>
+                    <?php }?>
                 </ul>
-                <div class="ckxq"><a href=""><img src="images/ckxq.jpg" alt="南宁西门子洗衣机售后维修电话"></a></div>
+
+                <div class="ckxq"><a href="<?php echo classify_url(3,207);?>"><img src="images/ckxq.jpg" alt=""></a></div>
             </div>
+
             <ul class="case clearFix">
-                <li><span><a href="http://www.gxnnxmzsh.com/?thread-6-114.html" title="西门子XQG70-WM12E2680W"><img src="images/2016092010141818486.jpg" alt="西门子XQG70-WM12E2680W"></a></span><a href="http://www.gxnnxmzsh.com/?thread-6-114.html" title="西门子XQG70-WM12E2680W">西门子XQG70-WM12E2680W</a></li>
-                <li><span><a href="http://www.gxnnxmzsh.com/?thread-5-114.html" title="西门子XQG80-WD12G4C01W"><img src="images/2016092010135541754.jpg" alt="西门子XQG80-WD12G4C01W"></a></span><a href="http://www.gxnnxmzsh.com/?thread-5-114.html" title="西门子XQG80-WD12G4C01W">西门子XQG80-WD12G4C01W</a></li>
-                <li><span><a href="http://www.gxnnxmzsh.com/?thread-4-114.html" title="西门子XQG80-WM10N1C80W"><img src="images/2016092010132084137.jpg" alt="西门子XQG80-WM10N1C80W"></a></span><a href="http://www.gxnnxmzsh.com/?thread-4-114.html" title="西门子XQG80-WM10N1C80W">西门子XQG80-WM10N1C80W</a></li>
+
+                <?php $goods=M()->table('index_goods n,index_relevance r')->where('r.classify_id =207 and r.content_id=n.goods_id')->order('date desc')->limit(3)->select();foreach($goods as $k=>$v){?>
+
+                <li>
+                    <span>
+                        <a href="<?php echo content_url($v['type_id'],$v['goods_id']);?>" title="西门子XQG70-WM12E2680W"><img src="<?php echo $v['goods_img'];?>" alt="<?php echo $v['goods_name'];?>">
+                        </a>
+                    </span>
+                    <a href="<?php echo content_url($v['type_id'],$v['goods_id']);?>" title="<?php echo $v['goods_name'];?>"><?php echo $v['goods_name'];?></a></li>
+                <?php }?>
+
             </ul>
         </div>
+
+
+<!--        洗衣机故障-->
         <div class="zixun clearFix">
             <div class="zhishi">
-                <div class="sytitle">洗衣机故障</div>
-                <ul class="newstit">
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-279-1.html" title="中国遭贸易限定，美国开年对大型南宁西门子洗衣机设限究竟意欲何为？">中国遭贸易限定，美国开年对大型南</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-278-1.html" title="奇帅全国营销峰会，解码奇帅“聚焦营销”">奇帅全国营销峰会，解码奇帅“聚焦</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-274-1.html" title="松下南宁西门子洗衣机被指炒冷饭 重压之下实难突围">松下南宁西门子洗衣机被指炒冷饭</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-217-1.html" title="谁说只有滚筒好，波轮南宁西门子洗衣机还是黑科技十足">谁说只有滚筒好，波轮南宁西门子洗</a></li>
+                <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>211))->find();echo $classify['classify_name'];?></div>
+                <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+
+                    <?php $news=M()->table('index_news n,index_relevance r')->where('r.classify_id =211 and r.content_id=n.news_id')->limit(4)->order('date desc')->select();foreach($news as $k=>$v){?>
+                    <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a></li>
+                    <?php }?>
                 </ul>
-                <div class="ckxq"><a href="http://www.gxnnxmzsh.com/?list-7.html"><img src="images/ckxq.jpg" alt="南宁西门子洗衣机售后维修服务电话"></a></div>
+                <div class="ckxq"><a href="<?php echo classify_url(14,211);?>"><img src="images/ckxq.jpg" alt="<?php echo $v['news_title'];?>"></a></div>
             </div>
+
+<!--            洗衣机常识-->
+            
             <div class="changshi">
-                <div class="sytitle">洗衣机常识</div>
-                <ul class="newstit">
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-322-1.html" title="我国干衣机2017年销量增140% 但普及率不足5%">我国干衣机2017年销量增140%&nbsp;但普及率不足5%</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-321-1.html" title="国家标准升级 你知道如何买南宁西门子洗衣机么？">国家标准升级&nbsp;你知道如何买南宁西门子洗衣机么？</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-320-1.html" title="聚焦上风营业、冰洗厨电全线联动 惠而浦中国化茧成蝶">聚焦上风营业、冰洗厨电全线联动&nbsp;惠而浦中国化茧</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-319-1.html" title="7月1日起南宁西门子洗衣机、冰箱等进口关税将降低至8%">7月1日起南宁西门子洗衣机、冰箱等进口关税将降</a></li>
+                <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>210))->find();echo $classify['classify_name'];?></div>
+                <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+
+                    <?php $news=M()->table('index_news n,index_relevance r')->where('r.classify_id =210 and r.content_id=n.news_id')->limit(4)->order('date desc')->select();foreach($news as $k=>$v){?>
+                    <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a></li>
+                    <?php }?>
                 </ul>
-                <div class="ckxq"><a href="http://www.gxnnxmzsh.com/?list-6.html"><img src="images/ckxq.jpg" alt="南宁西门子洗衣机维修电话"></a></div>
+                <div class="ckxq"><a href="<?php echo classify_url(14,210);?>"><img src="images/ckxq.jpg" alt=""></a></div>
             </div>
+
+
+<!--            洗衣机知识-->
+            
             <div class="guzhang">
-                <div class="sytitle">洗衣机知识</div>
-                <ul class="newstit">
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-266-1.html" title="高温蒸汽洗 洗衣不冻手　格兰仕云滴嘀让冬日衣物随心所“浴”">高温蒸汽洗&nbsp;洗衣不冻手　格兰仕云滴嘀让冬日衣物</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-263-1.html" title="“十九大”精神激励奇帅实现三大战略升级">“十九大”精神激励奇帅实现三大战略升级</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-260-1.html" title="品质消耗助力产业升级 高端干衣机拓荒高端洗护新蓝海">品质消耗助力产业升级&nbsp;高端干衣机拓荒高端洗护新</a></li>
-                    <li><a href="http://www.gxnnxmzsh.com/?thread-259-1.html" title="海信南宁西门子洗衣机西班牙市场创佳绩 “中国制造”畅销海外">海信南宁西门子洗衣机西班牙市场创佳绩&nbsp;“中国制</a></li>
+                <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>209))->find();echo $classify['classify_name'];?></div>
+                <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+
+                    <?php $news=M()->table('index_news n,index_relevance r')->where('r.classify_id =209 and r.content_id=n.news_id')->limit(4)->order('date desc')->select();foreach($news as $k=>$v){?>
+                    <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>
+"><?php echo $v['news_title'];?>
+                        </a></li>
+                    <?php }?>
                 </ul>
-                <div class="ckxq"><a href="http://www.gxnnxmzsh.com/?list-7.html"><img src="images/ckxq.jpg" alt="南宁西门子洗衣机售后维修电话"></a></div>
+                <div class="ckxq"><a href="<?php echo classify_url(14,209);?>"><img src="images/ckxq.jpg" alt=""></a></div>
             </div>
         </div>
         <div class="brand">

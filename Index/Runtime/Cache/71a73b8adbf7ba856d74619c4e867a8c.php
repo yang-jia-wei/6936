@@ -8,11 +8,11 @@
                 <!--            接值（$goods_id）-->
                 <?php $goods=M('goods')->where(array('goods_id'=>$content_id))->find(); ?>
                 <dl class="frnytitle clearFix">
-                    <dt>当前位置：<a href="index.php">首页</a> &gt;&gt; <a href="javascript:;">服务项目</a> &gt;&gt; 浏览产品</dt>
+                    <dt>当前位置：<a href="index.php">首页</a> &gt;&gt; <a href="#" onClick="javascript :history.go(-1)";>服务项目</a> &gt;&gt; 浏览产品</dt>
                     <dd>服务项目</dd>
                 </dl>
 
-                
+
                 <h1><?php echo $goods['goods_name'];?></h1>
                 <div class="keyword">标签：西门,西门子,门子 时间： 阅读
                     <script language="Javascript" src="/item/GetHits.asp?Action=Count&amp;GetFlag=0&amp;m=114&amp;ID=6"></script>302次
@@ -36,8 +36,11 @@
 
 
 
-                
-                <div class="x_g">相关：<a href="/plus/tags/index.asp?n=1&amp;ChannelID=0&amp;ClassID=0&amp;page=1" target="_blank">西门</a> <a href="/plus/tags/index.asp?n=2&amp;ChannelID=0&amp;ClassID=0&amp;page=1" target="_blank">西门子</a> <a href="/plus/tags/index.asp?n=3&amp;ChannelID=0&amp;ClassID=0&amp;page=1" target="_blank">门子</a> </div>
+
+                <div class="x_g">相关：
+                    <a href="" target="_blank">西门</a>
+                    <a href="" target="_blank">西门子</a>
+                    <a href="" target="_blank">门子</a> </div>
             </div>
         </div>
     </div>
