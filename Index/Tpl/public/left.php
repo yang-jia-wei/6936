@@ -4,21 +4,46 @@
         <span>服务热线</span><br>
 
     </div>
+<!--    服务项目-->
     <div class="nyxiangmu">
-        <div class="sytitle">服务项目</div>
+        <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>207))->find();echo $classify['classify_name'];?></div>
         <ul class="flmenu">
-            <li><a href="http://www.gxnnxmzsh.com/?list-9.html">西门子洗衣机维修</a></li>
-            <li><a href="http://www.gxnnxmzsh.com/?list-10.html">西门子滚筒洗衣机维修</a></li>
-            <li><a href="http://www.gxnnxmzsh.com/?list-11.html">西门子全自动洗衣机维修</a></li>
+            <?php $list=M('classify')->where(array('classify_pid'=>207))->order('date asc')->select();
+            //                    dump($list);die;
+
+            foreach($list as $k=>$v){?>
+                <li><a href="<?php echo classify_url($v['type_id'],$v['classify_id']);?>"><?php echo $v['classify_name']?></a></li>
+            <?php }?>
         </ul>
     </div>
+
+
+
+<!--    点击排行-->
+<!--    --><?php //dump($classify_id);die; ?>
+    <?php if($classify_id == 208){ ?>
     <div class="nyzx">
-        <div class="sytitle">最新新闻</div>
-        <ul class="newstit">
-            <li><a href="http://www.gxnnxmzsh.com/?thread-322-1.html" title="我国干衣机2017年销量增140% 但普及率不足5%">我国干衣机2017年销量增140%&nbsp;但普及率不</a></li>
-            <li><a href="http://www.gxnnxmzsh.com/?thread-321-1.html" title="国家标准升级 你知道如何买南宁西门子洗衣机么？">国家标准升级&nbsp;你知道如何买南宁西门子洗</a></li>
-            <li><a href="http://www.gxnnxmzsh.com/?thread-320-1.html" title="聚焦上风营业、冰洗厨电全线联动 惠而浦中国化茧成蝶">聚焦上风营业、冰洗厨电全线联动&nbsp;惠而浦</a></li>
-            <li><a href="http://www.gxnnxmzsh.com/?thread-319-1.html" title="7月1日起南宁西门子洗衣机、冰箱等进口关税将降低至8%">7月1日起南宁西门子洗衣机、冰箱等进口</a></li>
+        <div class="sytitle">点击排行</div>
+
+        <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+            <?php $news_max=M('news')->where('new_traffic')->order('new_traffic desc')->limit(4)->select();
+            foreach($news_max as $k=>$v){       ?>
+
+            <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a>
+            </li>
+
+                     <?php }?>
         </ul>
     </div>
+     <?php }else{ ?>
+        <!--    新闻-->
+        <div class="nyzx">
+            <div class="sytitle"><?php $classify=M('classify')->where(array('classify_id'=>208))->find();echo $classify['classify_name'];?></div>
+            <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                <?php $news=M()->table('index_news n,index_relevance r')->where('r.classify_id =208 and r.content_id=n.news_id')->limit(3)->order('date desc')->select();foreach($news as $k=>$v){?>
+                    <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a></li>
+                <?php }?>
+            </ul>
+        </div>
+    <?php }?>
 </div>

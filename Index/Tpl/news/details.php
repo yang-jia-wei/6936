@@ -13,9 +13,9 @@
             </dl>
             <h1><?php echo $news['news_title'];?></h1>
             <div class="keyword">标签：翻越,高山,送货,送货到,到家,只有,海尔,南宁,西门 时间： 阅读
-                <script language="Javascript" src="js/GetHits.asp">
-
-                </script>363次
+<!--                <script language="Javascript" src="js/GetHits.asp"></script>-->
+                <?php echo $news['news_traffic'];?>
+                次
             </div>
             <div class="substance">
                 <div id="MyContent">
