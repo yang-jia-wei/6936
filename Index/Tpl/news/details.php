@@ -12,7 +12,18 @@
                 <dd><?php $classify=M('classify')->where(array('classify_id'=>$classify_id))->find();echo $classify['classify_name'];?></dd>
             </dl>
             <h1><?php echo $news['news_title'];?></h1>
-            <div class="keyword">标签：翻越,高山,送货,送货到,到家,只有,海尔,南宁,西门 时间： 阅读
+            <div class="keyword">标签：
+                                       <?php
+                                       $label = unserialize($news['biaoqian']);
+                                       foreach($label as $k=>$v){      
+                                           $new_label=M('label')->where(array('label_id'=>$v))->find();
+                                           echo $new_label['label_title'].',';
+                                       }
+                                       ?>
+                   <?php ?>
+                时间：
+
+                阅读
 <!--                <script language="Javascript" src="js/GetHits.asp"></script>-->
                 <?php echo $news['news_traffic'];?>
                 次
@@ -34,15 +45,12 @@
             <?php }?>
 
             <div class="x_g">相关：
-                <a href="" target="_blank">翻越</a>
-                <a href="" target="_blank">高山</a>
-                <a href="" target="_blank">送货</a>
-                <a href="" target="_blank">送货到</a>
-                <a href="" target="_blank">到家</a>
-                <a href="" target="_blank">只有</a>
-                <a href="" target="_blank">海尔</a>
-                <a href="" target="_blank">南宁</a>
-                <a href="" target="_blank">西门</a>
+                <?php   foreach($label as $k=>$v){
+                    $new_label=M('label')->where(array('label_id'=>$v))->find();       ?>
+                    <a href="?m=label&a=index&type=news&label=<?php echo $new_label['label_title']; ?>" target="_blank"><?php echo $new_label['label_title']; ?></a>
+               <?php }?>
+
+
             </div>
         </div>
     </div>

@@ -21,12 +21,12 @@
 
 <!--    点击排行-->
 <!--    --><?php //dump($classify_id);die; ?>
-    <?php if($classify_id == 208){ ?>
+    <?php if($classify_id == 208 || $classify_id==209 || $classify_id==210 || $classify_id==211){ ?>
     <div class="nyzx">
         <div class="sytitle">点击排行</div>
 
         <ul class="newstit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-            <?php $news_max=M('news')->where('new_traffic')->order('new_traffic desc')->limit(4)->select();
+            <?php $news_max=M('news')->where('news_traffic')->order('news_traffic desc')->limit(4)->select();
             foreach($news_max as $k=>$v){       ?>
 
             <li><a href="<?php echo content_url($v['type_id'],$v['news_id']);?>" title="<?php echo $v['news_title'];?>"><?php echo $v['news_title'];?></a>

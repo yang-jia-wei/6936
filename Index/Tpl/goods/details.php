@@ -14,7 +14,15 @@
 
 
                 <h1><?php echo $goods['goods_name'];?></h1>
-                <div class="keyword">标签：西门,西门子,门子 时间： 阅读
+                <div class="keyword">标签：
+                    <?php
+                    $label = unserialize($goods['biaoqian']);
+                    foreach($label as $k=>$v){
+                        $goods_label=M('label')->where(array('label_id'=>$v))->find();
+                        echo $goods_label['label_title'].',';
+                    }
+                    ?>
+                    阅读
                     <script language="Javascript" src="/item/GetHits.asp?Action=Count&amp;GetFlag=0&amp;m=114&amp;ID=6"></script>302次
                 </div>
                 <div class="substance"><div id="MyContent">
@@ -38,9 +46,11 @@
 
 
                 <div class="x_g">相关：
-                    <a href="" target="_blank">西门</a>
-                    <a href="" target="_blank">西门子</a>
-                    <a href="" target="_blank">门子</a> </div>
+                    <?php   foreach($label as $k=>$v){
+                        $new_label=M('label')->where(array('label_id'=>$v))->find();       ?>
+                        <a href="?m=label&a=index&type=goods&label=<?php echo $new_label['label_title']; ?>" target="_blank"><?php echo $new_label['label_title']; ?></a>
+                    <?php }?>
+                    
             </div>
         </div>
     </div>

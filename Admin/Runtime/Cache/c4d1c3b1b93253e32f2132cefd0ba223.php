@@ -48,12 +48,22 @@ $list = M('input')->where(array('type_id'=>$type_id,'edit_switch'=>2,'input_pid'
         <textarea name="data[<?php echo $v['field_name'];?>]" cols="60" rows="<?php echo $v['edit_size'];?>" id="<?php echo $v['field_name'];?>"></textarea>
         <?php
  break; case 3: echo fckeditor('data['.$v['field_name'].']',$v['edit_size'],''); break; case 4: ?>
-        <?php
+            <?php if($v['field_name']=="biaoqian"){ ?>
+
+            <?php $label=M()->table('index_label n,index_relevance r')->where('r.classify_id =216 and r.content_id=n.label_id')->order('date desc')->select();foreach($label as $ks=>$vs){?>
+                <label>
+                    <input type="checkbox" name="data[<?php echo $v['field_name'];?>][]" value="<?php echo $vs['label_id']?>" />
+                    <?php echo $vs['label_title'];?>
+                </label>&nbsp;&nbsp;
+            <?php } ?>
+        <?php }else{ ?>
+            <?php
  $input_p = M('input')->where(array('input_pid'=>$v['input_id']))->select(); foreach($input_p as $k2=>$v2){ ?>
-        <label>
-        <input type="checkbox" name="data[<?php echo $v['field_name'];?>][]" value="<?php echo $v2['input_value']?>" />
-        <?php echo $v2['input_name'];?>
-        </label>&nbsp;&nbsp;
+                <label>
+                    <input type="checkbox" name="data[<?php echo $v['field_name'];?>][]" value="<?php echo $v2['input_value']?>" />
+                    <?php echo $v2['input_name'];?>
+                </label>&nbsp;&nbsp;
+            <?php } ?>
         <?php } ?>
         <?php
  break; case 5: ?>

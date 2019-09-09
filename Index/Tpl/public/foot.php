@@ -1,7 +1,6 @@
 <div id="footer">
     <div class="dibucont">
-        专营西门子洗衣机售后维修业务，有意向的客户请咨询我们，南宁西门子洗衣机售后维修服务电话：<br>
-        南宁西门子洗衣机售后维修服务中心 版权所有
+        <?php echo $site['inscribe'];?>
         <ul class="link">
             <li>友情链接</li>
         </ul>
