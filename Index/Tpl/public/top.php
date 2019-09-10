@@ -1,8 +1,12 @@
 <div id="header">
     <div class="top">
         <div class="toubu clearFix">
-            <h1 class="logo"><img src="images/logo.jpg" alt="南宁西门子洗衣机维修电话"></h1>
-            <div class="tel"><img src="images/tel.jpg" alt="南宁西门子洗衣机售后维修电话"></div>
+            <a href="index.php">
+                <h1 class="logo"><img src="<?php echo $site['logo_img'];?>" alt=""></h1>
+            </a>
+            <a href="index.php">
+            <div class="tel"><img src="<?php echo $site['header_bj'];?>" alt=""></div>
+            </a>
         </div>
         <ul class="nav clearFix">
             <?php $list=M('classify')->where(array('classify_pid'=>2))->order('date asc')->select();foreach($list as $k=>$v){?>
@@ -17,4 +21,20 @@
 <!--            <li><a href="http://www.gxnnxmzsh.com/?list-8.html">联系我们</a></li>-->
         </ul>
     </div>
+</div>
+
+<script type="text/javascript" src="./js/flash.js"></script>
+<div id="bannerBox">
+    <div id="flashs">
+        <?php $banner=M()->table('index_banner n,index_relevance r')->where('r.classify_id =204 and r.content_id=n.banner_id')->order('date desc')->select();?>
+        <div class="bgitem" id="flashbg0" style="opacity: 1; z-index: 2;">
+            <div class="banner"><img src="<?php echo $banner[1]['banner_img']?>" alt="南宁西门子洗衣机售后维修服务电话"></div>
+        </div>
+        <div class="bgitem" id="flashbg1" style="opacity: 0; z-index: 1;">
+            <div class="banner"><img src="<?php echo $banner[0]['banner_img']?>" alt="南宁西门子洗衣机维修电话"></div>
+        </div>
+    </div>
+</div>
+
+
 </div>

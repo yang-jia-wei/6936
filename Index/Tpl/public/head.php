@@ -20,7 +20,7 @@ $balance=M('account')->where(array('member_id'=>$member_id))->order('account_id 
 if($balance=='')$balance=0.00;
 $mobile_url='mobile.php?'.$_SERVER["QUERY_STRING"];
 ?>
-<title><?php echo $site['title'];?></title>
+<title><?php echo $site['company_name'];?></title>
 <meta name="keywords" content="<?php echo $site['keywords'];?>" />
 <meta name="description" content="<?php echo $site['description'];?>" />
 <link href="Admin/Tpl/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>

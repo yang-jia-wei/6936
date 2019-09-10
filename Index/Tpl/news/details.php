@@ -17,7 +17,7 @@
                                        $label = unserialize($news['biaoqian']);
                                        foreach($label as $k=>$v){      
                                            $new_label=M('label')->where(array('label_id'=>$v))->find();
-                                           echo $new_label['label_title'].',';
+                                           echo $new_label['label_title'].'&nbsp;';
                                        }
                                        ?>
                    <?php ?>

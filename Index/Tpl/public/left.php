@@ -1,7 +1,8 @@
 <div class="leftcont">
     <div class="nylianxi">
-        联系人：南宁客服<br>
-        <span>服务热线</span><br>
+        <?php $contact_us=M()->table('index_contact_us')->where(array('contact_us_id'=>1))->find();?>
+        联系人：<?php echo $contact_us['contact_people'];?><br>
+        <span>服务热线 : <?php echo $contact_us['contact_tel'];?></span><br>
 
     </div>
 <!--    服务项目-->
