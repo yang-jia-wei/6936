@@ -6,7 +6,7 @@
             <?php require APP_ROOT.'public/left.php';?>
             <div class="rightcont">
                 <dl class="frnytitle clearFix">
-                    <dt>当前位置：<a href="index.php">首页</a> &gt;&gt; <a href="javascript:;"><?php $classify=M('classify')->where(array('classify_id'=>207))->find();echo $classify['classify_name'];?></a> &gt;&gt; 频道首页</dt>
+                    <dt>当前位置：<a href="index.php">首页</a> &gt;&gt; <a href="javascript:;"><?php $classify=M('classify')->where(array('classify_id'=>207))->find();echo $classify['classify_name'];?>
                     <dd><?php $classify=M('classify')->where(array('classify_id'=>207))->find();echo $classify['classify_name'];?></dd>
                 </dl>
                 <ul class="nycase clearFix">
