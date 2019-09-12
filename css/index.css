@@ -23,8 +23,8 @@ a:hover, a:active { text-decoration: none; color: #0774d0; }
 #flashs .btn { position:absolute; z-index:7; bottom:15px; left:50%; margin-left:-64px; padding:0px 6px; }
 #flashs .btn span { color:#fff; background:#202932; cursor: pointer; display: inline-block; margin:0 2px; width:25px; height:25px; font-size:14px; line-height:25px; text-align:center; }
 #flashs .btn span.cur { background:#0774d0; }
-#flashbg0 { background: url(../images/banner1.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }
-#flashbg1 { background: url(../images/banner2.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }
+/*#flashbg0 { background: url(../images/banner1.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }*/
+/*#flashbg1 { background: url(../images/banner2.jpg) no-repeat scroll center top; height: 600px; width: 100%; cursor: pointer; margin: 0 auto; }*/
 .banner { width: 1000px; margin: 0 auto;}
 .our{ margin-bottom:30px;}
 .lianxi{ float:left; width:280px; margin-right:14px;background-color:#FFF; line-height:28px; background:url(../images/lx.jpg) no-repeat #FFF; padding:90px 0 0 10px;}

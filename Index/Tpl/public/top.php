@@ -26,13 +26,15 @@
 <script type="text/javascript" src="./js/flash.js"></script>
 <div id="bannerBox">
     <div id="flashs">
-        <?php $banner=M()->table('index_banner n,index_relevance r')->where('r.classify_id =204 and r.content_id=n.banner_id')->order('date desc')->select();?>
-        <div class="bgitem" id="flashbg0" style="opacity: 1; z-index: 2;">
-            <div class="banner"><img src="<?php echo $banner[1]['banner_img']?>" alt="南宁西门子洗衣机售后维修服务电话"></div>
-        </div>
-        <div class="bgitem" id="flashbg1" style="opacity: 0; z-index: 1;">
-            <div class="banner"><img src="<?php echo $banner[0]['banner_img']?>" alt="南宁西门子洗衣机维修电话"></div>
-        </div>
+        <?php $banner=M()->table('index_banner n,index_relevance r')->where('r.classify_id =204 and r.content_id=n.banner_id')->order('date desc')->select();
+        foreach($banner as $k=>$v){
+            ?>
+        <div class="bgitem" id="flashbg<?php echo $k;?>" style="height: 600px; width: 100%; cursor: pointer; margin: 0 auto;background: url(<?php echo $v['banner_img'];?>) no-repeat;background-size:100% 100%;"></div>
+        <?php }?>
+
+<!--        <div class="bgitem" id="flashbg1" style="height: 600px; width: 100%; cursor: pointer; margin: 0 auto;background: url(images/banner2.jpg) no-repeat;background-size:100% 100%;"></div>-->
+<!--        <div class="bgitem" id="flashbg2" style="height: 600px; width: 100%; cursor: pointer; margin: 0 auto;background: url(images/banner1.jpg) no-repeat;background-size:100% 100%;"></div>-->
+<!--        <div class="bgitem" id="flashbg3" style="height: 600px; width: 100%; cursor: pointer; margin: 0 auto;background: url(images/banner2.jpg) no-repeat;background-size:100% 100%;"></div>-->
     </div>
 </div>
 
