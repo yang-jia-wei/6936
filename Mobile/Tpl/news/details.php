@@ -24,7 +24,7 @@
 
             <!--            <a href="javascript:;" class="page" data-ignore="true">上一条：暂无记录</a>-->
 <!--            <a href="javascript:;" class="page" data-ignore="true">下一条：暂无记录</a>-->
-            <a href="<?php $classify=M('classify')->where(array('classify_id'=>212))->find();echo classify_url($classify['type_id'],$classify['classify_id']);?>" title="返回列表" class="back">返回列表</a>
+            <a href="<?php $classify=M('classify')->where(array('classify_id'=>208))->find();echo classify_url($classify['type_id'],$classify['classify_id']);?>" title="返回列表" class="back">返回列表</a>
         </div>
     </div>
     <!--文章内容结束-->

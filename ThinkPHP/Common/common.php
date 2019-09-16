@@ -1570,3 +1570,121 @@ function get_child_classify($classify_id,$level=1,$type_id=3)
 
 
 
+function deldir($dir) {
+  //先删除目录下的文件：
+  $dh=opendir($dir);
+  while ($file=readdir($dh)) {
+    if($file!="." && $file!="..") {
+      $fullpath=$dir."/".$file;
+      if(!is_dir($fullpath)) {
+          unlink($fullpath);
+      } else {
+          deldir($fullpath);
+      }
+    }
+  }
+  
+  closedir($dh);
+  //删除当前文件夹：
+  if(rmdir($dir)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+function del_run(){
+
+    $time=time();
+    $file="Uploads/log.txt";
+  if(!file_exists($file))
+  {
+    touch($file,0777,true);//创建文件
+  }
+    $f=file_get_contents($file)?file_get_contents($file):0;
+
+    if(($f+864000)<$time){
+        //更新时间,删除缓存
+        $rs=file_put_contents($file,$time);
+        deldir('Index/Runtime');
+        deldir('Admin/Runtime');
+
+    }
+}
+
+
+
+// // 查询出分类下所有的数据
+// function classify_sql_join($pid, $classify_id)
+// {
+//   $product_class = son_class($pid);
+
+//   if( in_array($classify_id, $product_class)){
+//     $join = $classify_id;
+//      $son=M('classify')->where(array('classify_pid'=>$classify_id))->getField('classify_id', true);
+//      if($son){
+//         $son[] = $classify_id;
+//         $join = join(',', $son);
+//      }
+//   }else{
+//     $join = join(',', $product_class);
+//   }
+
+//   return $join;
+// }
+
+
+// /**
+//  * 这个函数适用于<=2层的， 查询所有子类下的内容
+ 
+//  * 使用时：'r.classify_id =243 要改成 'r.classify_id in('.$join.')
+//  * 
+//  * $join = classify_sql_join_product($recursive_classify_id, $classify_id);   ||classify_sql_join_product方法名
+//  * 
+//  * $goods=M()->table('index_goods n,index_relevance r')->where('r.classify_id in('.$join.') and r.content_id=n.goods_id')->order('date desc')->select();
+//  * @param  [type] $pid [description]
+//  * @return [type]      [description]
+//  */
+// function sons_class($pid)
+// {
+//   $next_sons = array();
+
+//   $arr =M('classify')->where(array('classify_pid'=>$pid))->order('date asc')->getField('classify_id', true);
+//   if( $arr ){
+//     $next_sons = array_merge($next_sons, $arr);
+//     foreach ($arr as $key => $classify_id) {
+//           $next_sons = array_merge($next_sons, sons_class($classify_id));
+//     }
+//     return $next_sons;
+//   }
+//   return array();
+// }
+
+
+
+// /**
+//  * 这个函数适用于>=3层的， 查询所有子类下的内容
+//  * [classify_sql_join_product description]
+//  * @param  [type] $pid         [description]
+//  * @param  [type] $classify_id [description]
+//  * @return [type]              [description]
+//  */
+// function classify_sql_join_product($pid, $classify_id ='')
+// {
+//   $product_class = sons_class($pid);
+
+//   if( in_array($classify_id, $product_class)){
+//     $join = $classify_id;
+//      $son=M('classify')->where(array('classify_pid'=>$classify_id))->getField('classify_id', true);
+//      if($son){
+//         $son[] = $classify_id;
+//         $join = join(',', $son);
+//      }
+//   }else{
+//     $join = join(',', $product_class);
+//   }
+
+//   return $join;
+// }

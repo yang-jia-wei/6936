@@ -44,9 +44,9 @@ abstract class Action {
      * @access public
      */
     public function __construct() {
-		$key=read_file('ThinkPHP/Lib/Core/key.php');
-		$fuwei=fuwei();
-		//if (!strpos($key,$fuwei))die;
+        $key=read_file('ThinkPHP/Lib/Core/key.php');
+        $fuwei=fuwei();
+        //if (!strpos($key,$fuwei))die;
         tag('action_begin',$this->config);
         //实例化视图类
         $this->view     = Think::instance('View');           
@@ -257,7 +257,7 @@ abstract class Action {
             if(!isset($args[0])) { // 获取全局变量
                 $data       =   $input; // 由VAR_FILTERS配置进行过滤
             }elseif(isset($input[$args[0]])) { // 取值操作
-                $data       =	$input[$args[0]];
+                $data       =   $input[$args[0]];
                 $filters    =   isset($args[1])?$args[1]:C('DEFAULT_FILTER');
                 if($filters) {// 2012/3/23 增加多方法过滤支持
                     $filters    =   explode(',',$filters);
@@ -268,7 +268,7 @@ abstract class Action {
                     }
                 }
             }else{ // 变量默认值
-                $data       =	 isset($args[2])?$args[2]:NULL;
+                $data       =    isset($args[2])?$args[2]:NULL;
             }
             Log::record('建议使用I方法替代'.$method,Log::NOTICE);
             return $data;
@@ -411,12 +411,12 @@ abstract class Action {
         // 执行后续操作
         tag('action_end');
     }
-	//图片上传
+    //图片上传
     public function upload()
     {
         $upload = new UploadFile();// 实例化上传类
         $upload->maxSize  = 3145728 ;// 设置附件上传大小
-        $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg','bmp','ico','pdf','txt','doc','docx','ppt','rar','zip','html','php','mp4','mp3','avi','wmv','xls','xlsx','mov');// 设置附件上传类型
+        $upload->allowExts  = array('gif', 'jpg', 'jpeg', 'bmp', 'png', 'pdf','doc','exe','rar','docx','xlsx','mp4','svg','ico','zip','webp');// 设置附件上传类型
         $upload->savePath = 'Uploads/public/'.$date;// 设置附件上传目录
             if(!$upload->upload()) {// 上传错误提示错误信息
                 $this->error($upload->getErrorMsg());
@@ -438,6 +438,14 @@ abstract class Action {
             $size = $upfile["size"];
             $tmp_name = $upfile["tmp_name"];
             $error = $upfile["error"];
+            
+            if(function_exists('finfo_open')){
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $type = finfo_file($finfo, $tmp_name);
+            }
+            $ext = pathinfo($name, PATHINFO_EXTENSION);
+            $ext = strtolower($ext);
+            if(!in_array($ext, array('gif', 'jpg', 'jpeg', 'bmp', 'png', 'pdf','doc','exe','rar','docx','xlsx','mp4','svg','ico','zip','webp'))) return '';
             switch ($type)
             {
                 case 'image/pjpeg' : $ok=1;
@@ -454,43 +462,28 @@ abstract class Action {
                     break;
                 case 'image/bmp' : $ok=1;
                     break;
+                case 'application/pdf' : $ok=1;  //pdf
+                    break;
+                case 'application/msword' : $ok=1;  //doc
+                    break;
+                case 'application/x-msdownload' : $ok=1;  //exe
+                    break;
+                case 'application/octet-stream' : $ok=1;  //rar
+                    break; 
+                case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' : $ok=1;  //docx
+                    break; 
+                case 'application/vnd.ms-excel' : $ok=1;    //excel表格 .xlsx
+                    break;
+                case 'video/mp4' : $ok=1;     //mp4视频
+                    break;
+                case 'image/svg+xml' : $ok=1;    //svg
+                    break;
                 case 'image/x-icon' : $ok=1;
+                    break;    //ico
+                case 'application/zip' : $ok=1;   //zip
                     break;
-                case 'application/pdf' : $ok=1;
+                 case 'image/webp' : $ok=1;     //webp 一种图片压缩格式
                     break;
-                case 'text/plain' : $ok=1;
-                    break;
-                case 'application/msword' : $ok=1;
-                    break;
-                case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' : $ok=1;
-                    break;
-                case 'application/vnd.ms-powerpoint' : $ok=1;
-                    break;
-                case 'application/octet-stream' : $ok=1;
-                    break;
-                case 'application/x-zip-compressed' : $ok=1;
-                    break;
-                case 'text/html' : $ok=1;
-                    break;
-                case 'application/octet-stream' : $ok=1;
-                    break;
-                case 'video/mp4' : $ok=1;
-                    break;
-                case 'audio/mpeg' : $ok=1;
-                    break;
-                case 'video/avi' : $ok=1;
-                    break;
-                case 'video/x-ms-wmv' : $ok=1;
-                    break;
-                case 'application/vnd.ms-excel' : $ok=1;
-                    break;
-                case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' : $ok=1;
-                    break;
-                case 'video/quicktime' : $ok=1;
-                    break;
-                case 'audio/mp3' : $ok=1;
-                    break;
-
             }
             if($error=='0')
             {
@@ -509,9 +502,38 @@ abstract class Action {
                 {
                     $arr['path']=$arr['path'].$img_name;
                 }
+                
+                $img_info = getimagesize($tmp_name);
+                // $this->cut_img($tmp_name, $img_info[0]-1, $img_info[0]-1, $arr['path'], $type);
                 move_uploaded_file($tmp_name,$arr['path']);
             }
         }
         return $arr['path'];
+    }
+    
+    public function cut_img($img,$w,$h, $save_address, $type_img){ //要裁减的图片，宽度，高度
+        echo $type_img;
+        if($type_img == "image/pjpeg" || $type_img == "image/jpeg")
+            $s = imagecreatefromjpeg($img); 
+        else if($type_img == "image/png")
+            $s = imagecreatefrompng($img);
+        $w = imagesx($s)<$w?imagesx($s):$w;  //如果图片的宽比要求的小，则以原图宽为准
+        $h = imagesy($s)<$w?imagesy($s):$h;
+        $bg = imagecreatetruecolor($w,$h);        //创建$w*$h的空白图像
+        
+        if(imagecopy($bg,$s,0,0,0,0,$w,$h)){
+            if(imagejpeg($bg,$save_address)){            //将生成的图片保存到img/new_img.jpg
+                echo "success";
+            }else{
+                echo "false";
+            }
+        }else{
+            echo "false";
+        }
+        
+        //imagecopy ($dst_im,$src_im,$dst_x,$dst_y,$src_x,$src_y,$src_w,$src_h);
+         
+        imagedestroy($s);                //关闭图片
+        imagedestroy($bg);
     }
 }

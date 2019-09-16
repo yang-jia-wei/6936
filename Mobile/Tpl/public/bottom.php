@@ -15,17 +15,17 @@
   <div class="foot foot-relative" id="foot">
     <div class="foot-relative"> 
 <?php $list=M('classify')->where(array('classify_id'=>219))->order('date asc')->find();?>
-    <a href="<?php echo classify_url($list['type_id'],$list['classify_id']);?>" target="_blank"><span class="commonfont"></span>
-      <h3>地图</h3>
+<!--    <a href="--><?php //echo classify_url($list['type_id'],$list['classify_id']);?><!--" target="_blank"><span class="commonfont"></span>-->
+<!--      <h3>地图</h3>-->
+<!--      </a>-->
+
+
+
+      </a>
+        <a href="sms:<?php echo $site['mobile'];?>"title="短信"><span class="commonfont"></span>
+      <h3>短信</h3>
       </a>
 
-
-
-<!--      </a>-->
-<!--        <a href="sms:--><?php //echo $site['mobile'];?><!--"title="短信"><span class="commonfont"></span>-->
-<!--      <h3>短信</h3>-->
-<!--      </a> -->
-<!--        -->
 
         <a href="javascript:;" class="cbtn-share common-search-btn" title="分享"><span class="commonfont"></span>
       <h3>分享</h3>
